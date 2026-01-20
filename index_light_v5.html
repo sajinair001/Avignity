@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InsightCraft | IT Consulting, vCISO, vCIO, Program Delivery</title>
+  <meta name="description" content="InsightCraft delivers seasoned IT leadership and practical solutions that drive real business outcomes." />
+  <style>
+:root{
+  --bg: #ffffff;
+  --bg2: #f4f6f9;
+
+  --primary: #0B1F33;
+
+  --text: #0b1220;
+  --muted: #4a5568;
+
+  --border: rgba(11,31,51,.12);
+  --surface: #ffffff;
+  --surface-muted: #f7f9fc;
+
+  --shadow: 0 14px 40px rgba(11,31,51,.12);
+
+  --radius: 11px;      /* tightened corners */
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+  --max: 1180px;
+}
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 0%, rgba(11,31,51,.08) 0%, transparent 60%),
+        radial-gradient(900px 700px at 90% 10%, rgba(11,31,51,.06) 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit; text-decoration:none}
+    h1,h2,h3{color: var(--primary)}
+    .section-head h2 span.accent{color: var(--primary)}
+    .wrap{max-width:var(--max); margin:0 auto; padding-left:max(20px, env(safe-area-inset-left)); padding-right:max(20px, env(safe-area-inset-right))}
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 14px;
+      border:1px solid rgba(11,31,51,.18);
+      border-radius: var(--radius-pill);
+      background: linear-gradient(90deg, rgba(11,31,51,.06), rgba(11,31,51,.06));
+      color: var(--muted);
+      font-size: 13px;
+      letter-spacing:.3px;
+    }
+    .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--primary), var(--primary));
+      box-shadow: 0 0 18px rgba(11,31,51,.20);
+    }
+
+    /* Nav */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(246,248,252,.75);
+      border-bottom: 1px solid rgba(15, 23, 42, .08);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:8px;
+      background: linear-gradient(135deg, var(--primary), var(--primary));
+      box-shadow: 0 14px 40px rgba(11,31,51,.12);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:before{
+      content:"";
+      position:absolute; inset:-30%;
+      background: conic-gradient(from 180deg, rgba(255,255,255,.0), rgba(255,255,255,.55), rgba(255,255,255,.0));
+      animation: spin 6s linear infinite;
+      opacity:.6;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    .nav-links{
+      display:flex; gap:18px; align-items:center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .nav-links a{padding:8px 10px; border-radius:6px}
+    .nav-links a:hover{background: rgba(11,31,51,.06); color:var(--primary)}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius: 9px;
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(0,0,0,.04);
+      color: var(--text);
+      font-weight: 600;
+      box-shadow: 0 12px 28px rgba(11,31,51,.12);
+      cursor:pointer;
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+    }
+    .btn:hover{transform: translateY(-1px); background: rgba(11,31,51,.06); border-color: rgba(11,31,51,.22)}
+    .btn.primary{
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+      box-shadow: 0 12px 32px rgba(11,31,51,.25);
+    }
+
+    .btn.primary:hover{
+      background: #102a44;
+      border-color: #102a44;
+    }
+
+    /* HERO */
+    .hero{
+      padding: 56px 0 32px;
+      position:relative;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+    .hero h1{
+      color: var(--primary);
+      margin:14px 0 10px;
+      font-size: clamp(20px, 3vw, 36px);
+      line-height: 1.05;
+      letter-spacing:-.6px;
+    }
+    .hero p{
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+      max-width: 60ch;
+    }
+    .hero-cta{display:flex; gap:12px; flex-wrap:wrap}
+    .stats{
+      margin-top: 26px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .stat{
+      background: rgba(255,255,255,.92);
+      border: 1px solid rgba(15,23,42,.08);
+      border-radius: var(--radius);
+      padding: 14px 14px;
+    }
+    .stat .n{font-size:18px; font-weight:800}
+    .stat .l{color:var(--muted); font-size:12px; margin-top:6px}
+
+    .panel{
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(15,23,42,.10);
+      background: linear-gradient(180deg, rgba(15,23,42,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      min-height: 340px;
+    }
+    .panel .overlay{
+      position:absolute; inset:0;
+      background:
+        radial-gradient(420px 320px at 80% 70%, rgba(11,31,51,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .bridge{display:none;}
+    .panel-image-bg .overlay{display:none;}
+
+    .panel-content{
+      position:relative;
+      padding: 22px;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .panel-content h3{margin:0; font-size:16px; letter-spacing:.2px}
+    .panel-content p{margin:0; color:var(--muted); font-size:13px; line-height:1.5}
+
+    .panel-image-bg{
+      background-image:
+        linear-gradient(180deg, rgba(0,0,0,.18) 0%, rgba(0,0,0,.38) 70%, rgba(0,0,0,.48) 100%),
+        url("images/dragon_bridge.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .panel-image-bg::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(500px 320px at 25% 20%, rgba(255,255,255,.10) 0%, transparent 60%);
+      pointer-events:none;
+    }
+    .panel-image-bg .panel-content{ position:relative; z-index:2; }
+    .panel-image-bg h3{ color:#ffffff; }
+    .panel-image-bg p{ color: rgba(255,255,255,.88); }
+
+    .panel-image-bg .mini{
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--border);
+      color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+    .panel-image-bg .mini b{ color: var(--primary); }
+    .panel-image-bg .mini span{ color: rgba(11,31,51,.78); }
+
+    .mini-grid{
+      margin-top:auto;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .mini{
+      border-radius: 10px;
+      padding: 12px;
+      border:1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.92);
+    }
+    .mini b{display:block; font-size:13px}
+    .mini span{display:block; color:var(--muted); font-size:12px; margin-top:6px}
+
+    /* Sections */
+    section:nth-of-type(even){ background: #f4f6f9; }
+    section:nth-of-type(odd){ background: #ffffff; }
+
+    section{
+      border-top: 1px solid rgba(11,31,51,.06);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      padding: 42px 0;
+    }
+    section:first-of-type{ border-top: none; }
+
+    @media (max-width: 980px){
+      section{
+        min-height: auto;
+        align-items: stretch;
+        padding: 42px 0;
+      }
+    }
+
+    .section-head{
+      display:flex; justify-content:center; align-items:flex-end; gap:16px;
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    .section-head h2{
+      color: var(--primary);
+      margin:0;
+      font-size: clamp(20px, 2.6vw, 24px);
+      letter-spacing:-.2px;
+      padding: 5px;
+    }
+    .section-head p{margin:0; color:var(--muted); max-width: 70ch}
+
+    /* Cards (base) */
+    .cards{
+      display:grid;
+      gap: 14px;
+    }
+
+    /* (1) Services: force 3 cards on desktop */
+    #services .cards{
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* (2) Approach: 4 cards on desktop */
+    #approach .cards{
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* Card base styling */
+    .card{
+      border-radius: var(--radius);
+      border:1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.92);
+      padding: 30px;
+      box-shadow: 0 14px 40px rgba(11,31,51,.10);
+      position:relative;
+      overflow:hidden;
+      text-align: center;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle at 30% 30%, rgba(11,31,51,.06), transparent 55%),
+                  radial-gradient(circle at 70% 60%, rgba(11,31,51,.08), transparent 60%);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    /* Make cards flex so "Learn More..." or an image can sit at bottom */
+    .card{
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* Icon styling + CENTERED */
+    .card .icon{
+      width:44px; height:44px;
+      display:grid;
+      place-items:center;
+      margin: 0 auto 12px auto;   /* center horizontally */
+      position:relative;
+      font-weight: 700;
+      object-fit: cover;
+      color: #D95A2B;
+      font-size: 2rem;
+    }
+
+    .card h3{margin:0 0 8px; font-size:18px; position:relative}
+    .card p{margin:0; color:var(--muted); font-size:14px; line-height:1.55; position:relative}
+
+    .list{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      color: var(--muted);
+      font-size: 13px;
+      position:relative;
+    }
+    .list li{margin:10px 0; display:flex; gap:10px; align-items:flex-start; justify-content:flex-start; text-align:left;}
+    .check{
+      width:18px; height:18px; border-radius:4px;
+      background: rgba(11,31,51,.08);
+      border: 1px solid rgba(11,31,51,.18);
+      display:grid; place-items:center;
+      flex: 0 0 auto;
+      margin-top:2px;
+      font-weight: 900;
+      color: var(--primary);
+    }
+
+    /* (1) Services: Learn More link pinned to bottom */
+    .learn-more{
+      margin-top: auto;
+      padding-top: 14px;
+      display:inline-flex;
+      gap: 8px;
+      align-items:center;
+      justify-content:center;
+      font-weight: 700;
+      color: var(--primary);
+      opacity: .92;
+      position:relative;
+    }
+    .learn-more:hover{ opacity: 1; text-decoration: underline; }
+
+    /* (2) Approach: optional image at bottom of each card */
+    .card-media{
+      margin-top: auto;
+      padding-top: 14px;
+      position:relative;
+    }
+    .card-media img{
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.10);
+      display:block;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items:stretch;
+    }
+
+    /* Team cards (About Us) */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin: 18px 0 18px;
+    }
+    .partner-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.2rem 1.8rem 1.8rem;
+      border-radius: 1.25rem;
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,.10);
+      min-height: 360px;
+    }
+    .partner-photo-wrapper {
+      overflow: visible;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .partner-photo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 1px solid var(--primary);
+      background: #e5e7eb;
+    }
+    .partner-role {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+    .partner-name {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      padding: 5px;
+    }
+    .partner-bio {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .quote{
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,.92);
+      border:1px solid rgba(0,0,0,.10);
+      box-shadow: var(--shadow);
+    }
+    .quote p{margin:0; color:var(--muted); line-height:1.65}
+    .quote .by{margin-top:14px; color:var(--text); font-weight:700}
+    .quote .role{color:var(--muted); font-size:13px; margin-top:4px}
+
+    .quote img{
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid rgba(0,0,0,.10);
+      display:block;
+    }
+
+    /* Contact */
+    .contact{
+      border-radius: calc(var(--radius-lg) + 2px);
+      border:1px solid rgba(0,0,0,.10);
+      background: linear-gradient(135deg, rgba(11,31,51,.06), rgba(11,31,51,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .contact-inner{
+      padding: 24px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items:start;
+    }
+    form{
+      display:grid; gap: 10px;
+      margin:0;
+    }
+    input, textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 9px;
+      background: rgba(255,255,255,.85);
+      color: var(--text);
+      border:1px solid rgba(0,0,0,.12);
+      outline:none;
+    }
+    textarea{min-height: 110px; resize: vertical}
+    input:focus, textarea:focus{border-color: rgba(11,31,51,.35)}
+    .fine{color:var(--muted); font-size:12px; line-height:1.5}
+
+    /* (3) Company social block bottom-right in Contact */
+    .company-contact{
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(0,0,0,.10);
+      display:grid;
+      gap: 10px;
+    }
+    .company-contact a{
+      color: var(--primary);
+      font-weight: 700;
+      opacity: .92;
+    }
+    .company-contact a:hover{
+      opacity: 1;
+      text-decoration: underline;
+    }
+    .company-contact .label{
+      font-size: 12px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: rgba(11,31,51,.70);
+      font-weight: 800;
+    }
+
+    footer{
+      padding: 30px 0 44px;
+      color: var(--muted);
+      border-top: 1px solid rgba(15,23,42,.08);
+      margin-top: 36px;
+    }
+
+    /* Mobile */
+    .hamburger{display:none}
+
+    /* (4) FIX: ensure mobile menu is never visible on desktop */
+    .mobile-menu{ display:none; }
+
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .panel{min-height: 300px}
+      .stats{grid-template-columns:1fr}
+      .split{grid-template-columns:1fr}
+      .contact-inner{grid-template-columns:1fr}
+
+      /* Responsive grids */
+      #services .cards{ grid-template-columns: 1fr; }
+      #approach .cards{ grid-template-columns: 1fr; }
+
+      .nav-links{display:none}
+      .hamburger{display:inline-flex}
+
+      .mobile-menu{
+        display:none; /* toggled by JS to block */
+        border-top: 1px solid rgba(0,0,0,.08);
+        padding: 10px 0 14px;
+      }
+      .mobile-menu a{
+        display:block;
+        padding: 10px 10px;
+        border-radius: 8px;
+        color: var(--muted);
+      }
+      .mobile-menu a:hover{background: rgba(0,0,0,.04); color: var(--text)}
+
+      .panel-image-bg{background-position: 50% 35%; min-height: 360px;}
+    }
+
+    @media (max-width: 520px){
+      .hero p{font-size:16px}
+      .card p, .list{font-size:14px}
+      .mini-grid{grid-template-columns:1fr}
+      .btn{padding:14px 16px}
+      .nav-inner{padding:12px 0}
+    }
+</style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="InsightCraft Home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>InsightCraft</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a href="#about">About</a>
+        <a href="#team">Team</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Schedule a consult</a>
+      </nav>
+
+      <button class="btn hamburger" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">
+        Menu
+        <span aria-hidden="true">☰</span>
+      </button>
+    </div>
+
+    <div class="wrap mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#services">Services</a>
+      <a href="#approach">Approach</a>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="pill"><span class="dot" aria-hidden="true"></span> Boutique IT Consulting • vCISO • vCIO • Program Delivery</span>
+        <h1>Insight-led IT leadership, crafted into execution.</h1>
+        <p>
+          InsightCraft is a consulting firm of three industry veterans with a combined <b>60+ years</b> of IT experience.
+          We provide vCISO/vCIO leadership, product and program delivery, and process improvement to help organizations reduce risk,
+          improve delivery, and scale with confidence.
+        </p>
+        <div class="hero-cta">
+          <a class="btn primary" href="#contact">
+            Schedule Consultation
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a class="btn" href="#services">Explore services</a>
+        </div>
+
+        <div class="stats" aria-label="Key stats">
+          <div class="stat">
+            <div class="n">60+ yrs</div>
+            <div class="l">Combined IT leadership</div>
+          </div>
+          <div class="stat">
+            <div class="n">vCISO / vCIO</div>
+            <div class="l">Fractional executive support</div>
+          </div>
+          <div class="stat">
+            <div class="n">Delivery-first</div>
+            <div class="l">Practical, measurable outcomes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel panel-image-bg" aria-label="What we bring">
+        <div class="panel-content">
+          <h3>What we bring</h3>
+          <p>Senior leadership, structured delivery, and continuous improvement — designed for practical outcomes.</p>
+          <div class="mini-grid">
+            <div class="mini">
+              <b>Leadership on demand</b>
+              <span>vCISO / vCIO advisory, governance, and roadmaps</span>
+            </div>
+            <div class="mini">
+              <b>Execution discipline</b>
+              <span>Product, project & program management</span>
+            </div>
+            <div class="mini">
+              <b>Process improvement</b>
+              <span>Operational cadence, standard work, metrics</span>
+            </div>
+            <div class="mini">
+              <b>Trusted partnership</b>
+              <span>Clear communication, predictable delivery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Services</h2>
+          <p>Pick what you need — fractional leadership, delivery support, or targeted improvement programs.</p>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <!-- Change icon by replacing the emoji or using an <img> / SVG -->
+          <div class="icon" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white" stroke="#D95A2B" stroke-width="1.5">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+              </svg>
+          </div>
+          <h3>vCISO</h3>
+          <p>Security leadership without the overhead — risk, governance, strategy, and execution support.</p>
+          <ul class="list">
+            <li><span class="check" aria-hidden="true">✓</span>Risk & compliance programs</li>
+            <li><span class="check" aria-hidden="true">✓</span>Security roadmap & metrics</li>
+            <li><span class="check" aria-hidden="true">✓</span>Incident readiness & resilience</li>
+          </ul>
+          <a class="learn-more" href="vciso.html" aria-label="Learn more about vCISO">Learn More…</a>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white" stroke="#D95A2B" stroke-width="1.5">
+              <!-- Outer circle -->
+              <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
+              <!-- Compass needle -->
+              <path d="M12 6 L14 12 L12 18 L10 12 Z" fill="#D95A2B"/>
+              <!-- Center ring -->
+              <circle cx="12" cy="12" r="1.6" fill="white" stroke="#D95A2B" stroke-width="1.5"/>              
+            </svg>
+          </div>
+          <h3>vCIO</h3>
+          <p>Technology strategy aligned to business outcomes — modernization, governance, and delivery.</p>
+          <ul class="list">
+            <li><span class="check" aria-hidden="true">✓</span>IT strategy & operating model</li>
+            <li><span class="check" aria-hidden="true">✓</span>Portfolio prioritization</li>
+            <li><span class="check" aria-hidden="true">✓</span>Vendor & cost optimization</li>
+          </ul>
+          <a class="learn-more" href="vcio.html" aria-label="Learn more about vCIO">Learn More…</a>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">
+            <svg width="36" height="36" viewBox="0 0 24 24" stroke="#D95A2B" fill="none" stroke-width="1.5">
+              <!-- Clipboard / panel -->
+              <rect x="6" y="5" width="12" height="15" rx="2"/>
+              <path d="M10 5.5h4" stroke-linecap="round"/>
+
+              <!-- Timeline nodes -->
+              <circle cx="9" cy="10" r="0.5"/>
+              <circle cx="9" cy="13.5" r="0.5"/>
+              <circle cx="9" cy="17" r="0.5"/>
+
+              <!-- Timeline line -->
+              <path d="M9 11.2v4.6" stroke-linecap="round"/>
+
+              <!-- Task lines -->
+              <path d="M11.5 10h4.5" stroke-linecap="round"/>
+              <path d="M11.5 13.5h4.5" stroke-linecap="round"/>
+              <path d="M11.5 17h3" stroke-linecap="round"/>
+            </svg>            
+          </div>
+          <h3>Product • Project • Program</h3>
+          <p>Hands-on delivery leadership to move initiatives from plan to outcomes, with cadence and control.</p>
+          <ul class="list">
+            <li><span class="check" aria-hidden="true">✓</span>Program governance & reporting</li>
+            <li><span class="check" aria-hidden="true">✓</span>Agile / hybrid delivery</li>
+            <li><span class="check" aria-hidden="true">✓</span>Stakeholder alignment</li>
+          </ul>
+          <a class="learn-more" href="delivery.html" aria-label="Learn more about delivery services">Learn More…</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section id="approach">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Approach</h2>
+          <h3>A simple, repeatable model that keeps strategy grounded and execution predictable.</h3>
+        </div>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon" aria-hidden="true">1</div>
+          <h3>Discover & Assess</h3>
+          <p>We conduct a comprehensive analysis of your current processes, technology stack and organizational goals to identify opportunities for improvement.</p>
+<br>
+          <!-- Optional image at the bottom (uncomment + set src) -->
+          <div class="card-media">
+            <img src="images/approach-1.jpg" alt="Discover & Assess">
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">2</div>
+          <h3>Design & Strategize</h3>
+          <p>We develop a tailored transformation roadmap with clear milestones, risk mitigation strategies and measurable success criteria.</p>
+
+          <!-- Optional image -->
+          <div class="card-media">
+            <img src="images/approach-2.jpg" alt="Design & Strategize">
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">3</div>
+          <h3>Implement & Integrate</h3>
+          <p>Our experts work alongside your teams to deploy solutions, integrate capabilities and ensure seamless adoption across the organization.</p>
+
+          <!-- Optional image -->
+          <div class="card-media">
+            <img src="images/approach-3.jpg" alt="Implement & Integrate">
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="icon" aria-hidden="true">4</div>
+          <h3>Optimize & Scale</h3>
+          <p>We continuously monitor performance, refine processes, and scale successful initiatives to maximize ROI and drive lasting organizational change.</p>
+
+          <!-- Optional image -->
+          <div class="card-media">
+            <img src="images/approach-4.jpg" alt="Optimize & Scale">
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / TESTIMONIAL STYLE -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>About InsightCraft</h2>
+          <h3>Where Deep Expertise Meets Innovative Technology</h3>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="quote">
+          <p>InsightCraft was founded by three industry veterans who share a common vision: to help organizations unlock their full potential through intelligent process improvement and thoughtful technology integration.</p>
+          <p>With combined experience spanning over six decades at Fortune 500 companies like GE, Pratt & Whitney, and Alstom, our team brings unparalleled expertise in enterprise transformation, IT strategy, and operational excellence.
+            We believe that the best solutions come from understanding both the technology and the people who use it. That's why we take a human-centered approach to AI implementation, ensuring that automation enhances rather than replaces human expertise.
+          </p>
+          <div class="by">Client Leader (Sample)</div>
+          <div class="role">Technology & Operations</div>
+          <p class="fine" style="margin-top:14px;">
+            Replace this with a real testimonial when ready. Until then, keep wording general.
+          </p>
+        </div>
+
+        <div class="quote">
+          <img src="images/abstract.jpg">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TEAM -->
+  <section id="team">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>The Team</h2>
+          <h3>Meet the Experts Behind Your Transformation</h3>
+          <p>Our founding team brings decades of hands-on experience from the world's leading industrial and technology companies.</p>
+        </div>
+      </div>
+
+      <div class="partner-grid" aria-label="Partners">
+        <article class="partner-card">
+          <div class="partner-photo-wrapper">
+            <img src="images/partner1.jpg" alt="Partner 1" class="partner-photo" />
+          </div>
+          <div class="partner-role">Cybersecurity leadership</div>
+          <div class="partner-name">SAJI NAIR</div>
+          <div class="partner-bio">
+            Experienced cybersecurity leader focused on practical risk
+            reduction, governance, and resilience, with a track record of
+            building programs that stick.
+            <br><br>
+            Saji has served in CISO, BISO, IT Director and Operational Leader roles during his time with GE and GE Vernova.
+          </div>
+        </article>
+
+        <article class="partner-card">
+          <div class="partner-photo-wrapper">
+            <img src="images/partner2.jpg" alt="Partner 2" class="partner-photo" />
+          </div>
+          <div class="partner-role">Delivery leadership</div>
+          <div class="partner-name">KEN TURNER</div>
+          <div class="partner-bio">
+            Delivery leader bringing structure, cadence, and stakeholder
+            alignment to complex IT programs, from strategy through
+            execution.
+          </div>
+        </article>
+
+        <article class="partner-card">
+          <div class="partner-photo-wrapper">
+            <img src="images/partner3.jpg" alt="Partner 3" class="partner-photo" />
+          </div>
+          <div class="partner-role">Builder mindset</div>
+          <div class="partner-name">MATT STJARRE</div>
+          <div class="partner-bio">
+            Builder and architect focused on modern platforms, automation,
+            and AI-enabled solutions that scale beyond the first project.
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h2>Get In Touch</h2>
+          <h3>Let's Start Your Transformation Journey</h3>
+          <p>Tell us what you’re trying to accomplish — we’d be glad to discuss your challenges and possible next steps.</p>
+        </div>
+      </div>
+
+      <div class="contact">
+        <div class="contact-inner">
+          <div>
+            <h3 style="margin:0 0 8px;">Schedule a consult</h3>
+            <p class="fine" style="margin:0 0 14px;"></p>
+
+            <form id="contactForm">
+              <input name="name" placeholder="Your name" required />
+              <input name="email" type="email" placeholder="Email address" required />
+              <input name="company" placeholder="Company (optional)" />
+              <textarea name="message" placeholder="Describe your current challenges or goals..." required></textarea>
+              <button class="btn primary" type="submit">Send message</button>
+              <div class="fine" id="formNote" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <div>
+            <h3 style="margin:0 0 8px;">Common engagements</h3>
+            <ul class="list" style="margin-top:10px;">
+              <li><span class="check" aria-hidden="true">✓</span>30–60 day Assessments & Roadmaps</li>
+              <li><span class="check" aria-hidden="true">✓</span>Fractional vCISO / vCIO Retainer</li>
+              <li><span class="check" aria-hidden="true">✓</span>Program recovery & delivery governance</li>
+              <li><span class="check" aria-hidden="true">✓</span>Operational cadence & IT Process Improvement</li>
+              <li><span class="check" aria-hidden="true">✓</span>Another Item Here</li>
+            </ul>
+
+
+            <!-- (3) Company contact/social block (bottom-right) -->
+            <div class="company-contact" aria-label="Company contact">
+              <div class="label">Company</div>
+              <div class="fine">
+                Email: <a href="mailto:contact@insightcraft.com">contact@insightcraft.com</a>
+              </div>
+              <div class="fine">
+                LinkedIn: <a href="https://www.linkedin.com/company/insightcraft" target="_blank" rel="noreferrer noopener">linkedin.com/company/insightcraft</a>
+              </div>
+              <div class="fine">
+                X / Twitter: <a href="https://x.com/insightcraft" target="_blank" rel="noreferrer noopener">@insightcraft</a>
+              </div>
+              <!-- Add more as needed:
+              <div class="fine">YouTube: <a href="#" target="_blank" rel="noreferrer noopener">InsightCraft</a></div>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>© <span id="year"></span> InsightCraft. All rights reserved.</div>
+      <div style="display:flex; gap:14px;">
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', () => {
+        const open = menu.style.display === 'block';
+        menu.style.display = open ? 'none' : 'block';
+        btn.setAttribute('aria-expanded', String(!open));
+      });
+    }
+
+    // Demo form handler (replace with real backend / form service)
+    const form = document.getElementById('contactForm');
+    const note = document.getElementById('formNote');
+    if (form && note) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        note.textContent = "Thanks — message captured (demo). Hook this to your form provider or backend.";
+        form.reset();
+      });
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // close mobile menu on navigation
+        if (menu && window.innerWidth <= 980) menu.style.display = 'none';
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+</body>
+</html>
