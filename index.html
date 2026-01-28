@@ -1655,6 +1655,7 @@ a.method-value:hover {
     margin-top: 12px; 
     font-size: 0.95rem; 
     width: 100%;
+    grid-column: span 2;
 }
 
 
@@ -3454,8 +3455,6 @@ a.method-value:hover {
     <script src="script.js"></script>
     <script>
         // === Contact form backend (Google Apps Script Web App) ===
-        // 1) Deploy the Apps Script as a Web App (Execute as: Me; Who has access: Anyone)
-        // 2) Paste the /exec URL below
         const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbz8cph4p-LoQJUrxEvCVmgGKwt0cZbrSt6b5YuwQ0AemzRrmL-uf1yOc_ZNwtp5XNpm/exec";
 
         const form = document.getElementById("contact-form");
