@@ -1651,6 +1651,8 @@ a.method-value:hover {
     color: var(--color-gray-300);
 }
 
+.form-status { margin-top: 12px; font-size: 0.95rem; }
+
 /* ============================================
    Responsive Design
    ============================================ */
@@ -3361,6 +3363,7 @@ a.method-value:hover {
                                 <polygon points="22 2 15 22 11 13 2 9 22 2"/>
                             </svg>
                         </button>
+                        <p id="form-status" class="form-status"></p>
                     </form>
                 </div>
             </div>
@@ -3428,5 +3431,40 @@ a.method-value:hover {
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const CONTACT_ENDPOINT = "https://script.google.com/macros/s/AKfycbyFuaTicGAKz-NR9-ld2yqlOhbHa0OXiPV19VnlkOjHjIYL6AugBKjzgNGokOfFLpvToA/exec"; // paste the Apps Script web app URL here
+
+        const form = document.getElementById("contact-form");
+        const statusEl = document.getElementById("form-status"); // add this element in HTML (see below)
+
+        if (form) {
+            form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            if (statusEl) statusEl.textContent = "Sending...";
+
+            const fd = new FormData(form);
+            const payload = Object.fromEntries(fd.entries());
+
+            try {
+                const res = await fetch(CONTACT_ENDPOINT, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(payload)
+                });
+
+                const data = await res.json();
+
+                if (!data.ok) throw new Error(data.error || "Unknown error");
+
+                if (statusEl) statusEl.textContent = "Thank you — your message has been sent.";
+                form.reset();
+            } catch (err) {
+                if (statusEl) statusEl.textContent = "Sorry — something went wrong. Please try again.";
+                console.error(err);
+            }
+            });
+        }
+    </script>
 </body>
 </html>
