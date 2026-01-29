@@ -1409,6 +1409,7 @@ h4 { font-size: 1.125rem; }
 .contact {
     padding: var(--spacing-2xl) 0;
     background: var(--color-gray-50);
+    overflow-x: clip;
 }
 
 .contact-wrapper {
@@ -1665,11 +1666,19 @@ a.method-value:hover {
 
 
 .form-status.error { color: #b91c1c; }
-.recaptcha-row { display: flex; justify-content: center; }
-.recaptcha-row .g-recaptcha { transform-origin: 0 0; }
+.recaptcha-row { 
+    display: flex; 
+    justify-content: center; 
+    overflow: hidden;
+}
+.recaptcha-row .g-recaptcha { transform-origin: center top; }
 @media (max-width: 420px) {
   /* Scale reCAPTCHA slightly on very small screens */
-  .recaptcha-row .g-recaptcha { transform: scale(0.92); }
+  .recaptcha-row .g-recaptcha { transform: scale(0.88); }
+}
+@media (max-width: 360px) {
+  /* Scale reCAPTCHA slightly on very small screens */
+  .recaptcha-row .g-recaptcha { transform: scale(0.78); }
 }
 
 /* ============================================
@@ -2098,7 +2107,8 @@ a.method-value:hover {
     }
 
     .contact-form-wrapper {
-        padding: var(--spacing-xl);
+        padding: var(--spacing-md);
+        max-width: 100%;
     }
 
     .contact-description {
