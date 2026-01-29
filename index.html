@@ -21,6 +21,7 @@
     /* Colors */
     --color-primary: #14A0E9;
     --color-secondary: #0070C0;
+    --color-identity: #0B1F33;
     --color-gradient-glow-1: rgba(20, 160, 233, 0.2);
     --color-gradient-glow-2: rgba(20, 160, 233, 0.2);
     /* Not used -- DELETE? */
@@ -1956,10 +1957,7 @@ a.method-value:hover {
         padding-right: 20px;
         padding-bottom: 20px;
         gap: var(--spacing-sm);
-        /*
-        padding: calc(80px + var(--spacing-xl)) var(--spacing-xl) var(--spacing-xl);
-        height: 100vh;
-        height: 100dvh;*/
+
         background: #ffffff;
         display: flex;
         flex-direction: column;
@@ -1968,6 +1966,19 @@ a.method-value:hover {
         transition: right var(--transition-base);
         overflow-y: auto;
         z-index: 1000;
+
+        /* Glass background */
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(14px) saturate(160%);
+        -webkit-backdrop-filter: blur(14px) saturate(160%);
+
+        /* Subtle glass edge */
+        border-left: 1px solid rgba(255, 255, 255, 0.35);
+
+        /* Depth */
+        box-shadow:
+        -20px 0 40px rgba(0, 0, 0, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);        
     }
 
     .nav-menu li {
@@ -2033,6 +2044,12 @@ a.method-value:hover {
         width: 100%;
         min-height: 48px;
         display: flex;
+        color: var(--color-identity);
+        font-weight: 500;        
+    }
+
+    .nav-menu .nav-link:hover {
+        background: rgba(11, 31, 51, 0.06);
     }
 
     .nav-link.nav-cta {
